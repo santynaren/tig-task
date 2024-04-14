@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { CreateShrinklinkInput } from './dto/create-shrinklink.input';
-import { PrismaService } from 'src/database/prisma.service';
+import { PrismaService } from '../database/prisma.service';
 import { Shrinklink } from './entities/shrinklink.entity';
-import { getShortVersionUrl } from 'src/utils/url.helper';
+import { getShortVersionUrl } from '../utils/url.helper';
 
 @Injectable()
 export class ShrinklinkService {

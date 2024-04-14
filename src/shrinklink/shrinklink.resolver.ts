@@ -20,7 +20,9 @@ export class ShrinklinkResolver {
   }
 
   @Query(() => Shrinklink, { name: 'getSourceLink' })
-  findOne(@Args('shortURL', { type: () => String }) shortURL: string) {
+  async getSourceLink(
+    @Args('shortURL', { type: () => String }) shortURL: string,
+  ) {
     return this.shrinklinkService.getSourceLink(shortURL);
   }
 }
