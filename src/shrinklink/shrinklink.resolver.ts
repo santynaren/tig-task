@@ -2,6 +2,7 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ShrinklinkService } from './shrinklink.service';
 import { Shrinklink } from './entities/shrinklink.entity';
 import { CreateShrinklinkInput } from './dto/create-shrinklink.input';
+import { validateShortUrl } from 'src/utils/url.helper';
 
 @Resolver(() => Shrinklink)
 export class ShrinklinkResolver {
@@ -11,10 +12,14 @@ export class ShrinklinkResolver {
   async createShrinkLink(
     @Args('createShrinklinkInput') createShrinklinkInput: CreateShrinklinkInput,
   ): Promise<Shrinklink> {
-    try {
-      return this.shrinklinkService.createShrinkLink(createShrinklinkInput);
-    } catch (e) {
-      throw e;
+    if (createShrinklinkInput.sourceURL.length > 7) {
+      try {
+        return this.shrinklinkService.createShrinkLink(createShrinklinkInput);
+      } catch (e) {
+        throw e;
+      }
+    } else {
+      throw 'URL Length Must be more than 7 Characters';
     }
   }
 
@@ -27,6 +32,14 @@ export class ShrinklinkResolver {
   async getSourceLink(
     @Args('shortURL', { type: () => String }) shortURL: string,
   ) {
-    return this.shrinklinkService.getSourceLink(shortURL);
+    if (validateShortUrl(shortURL)) {
+      try {
+        return this.shrinklinkService.getSourceLink(shortURL);
+      } catch (e) {
+        throw e;
+      }
+    } else {
+      throw 'Wrong Shorten URL';
+    }
   }
 }
