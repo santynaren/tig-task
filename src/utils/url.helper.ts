@@ -16,7 +16,8 @@ export const getNewShortUrl = () => {
   // values provides 0-9 digits
   // limit 5 give 5 digits
   // 62(base)^5
-  const values = 'abcedefghijklnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ123456789';
+  const values =
+    'abcedefghijklmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ0123456789';
   let newShortUrl = '';
   for (let iteration = 0; iteration < 5; iteration++) {
     const randomValue = Math.floor(Math.random() * values.length);
@@ -26,7 +27,7 @@ export const getNewShortUrl = () => {
 };
 
 export const checkShortUrl = async (shortURL: string) => {
-  const verify = await prisma.urlTable
+  const checkIfShortURLExists = await prisma.urlTable
     .findUnique({
       where: {
         shortURL: shortURL,
@@ -34,5 +35,5 @@ export const checkShortUrl = async (shortURL: string) => {
       select: { shortURL: true },
     })
     .then((data) => data);
-  return verify;
+  return checkIfShortURLExists;
 };
