@@ -29,7 +29,7 @@ describe('app service tests', () => {
     }).compile();
     shrinkLink = {
       id: 1,
-      sourceURL: 'https://www.google.com',
+      sourceURL: 'https://www.https://narendra-tech-radar.netlify.app/docs/',
       shortURL: 'http://localhost:3000/test189',
       viewCount: 0,
     };
@@ -45,7 +45,7 @@ describe('app service tests', () => {
   it('should have record present test189', async () => {
     const result = await service.redirectToSourceLink('test189');
     expect(result).toStrictEqual({
-      url: 'https://www.google.com',
+      url: 'https://www.https://narendra-tech-radar.netlify.app/docs/',
     });
   });
 

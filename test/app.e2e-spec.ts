@@ -68,6 +68,7 @@ describe('AppController (e2e)', () => {
         expect(res.body.data.getSourceLink.sourceURL).toBe(
           'https://www.google.com/',
         );
+        // check for viewcount increase
         expect(res.body.data.getSourceLink.viewCount).toBe(1);
       });
   });

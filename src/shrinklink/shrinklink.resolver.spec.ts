@@ -23,28 +23,28 @@ describe('ShrinklinkResolver', () => {
     // return expect(controller.findOne('t5i5oz7')).toHaveBeenCalled();
     const result = {
       id: 0,
-      shortURL: 'test',
-      sourceURL: 'google.com',
+      shortURL: 'tEs1t',
+      sourceURL: 'https://bit.ly/narenmobilework',
       viewCount: 0,
     };
     jest
       .spyOn(resolver, 'getSourceLink')
       .mockImplementation(async () => result);
-    expect(await resolver.getSourceLink('testURL')).toBe(result);
+    expect(await resolver.getSourceLink('tEs1t')).toBe(result);
   });
 
   it('should retrun list of records', async () => {
     const result = [
       {
         id: 0,
-        shortURL: 'test',
-        sourceURL: 'google.com',
+        shortURL: 'tEs1t',
+        sourceURL: 'https://bit.ly/narenmobilework',
         viewCount: 0,
       },
       {
         id: 1,
-        shortURL: 'test',
-        sourceURL: 'google.com',
+        shortURL: 'tEs2T',
+        sourceURL: 'https://bit.ly/narenmobilework',
         viewCount: 0,
       },
     ];
@@ -55,18 +55,19 @@ describe('ShrinklinkResolver', () => {
   });
 
   it('should create a shortURL', async () => {
-    // return expect(controller.findOne('t5i5oz7')).toHaveBeenCalled();
     const result = {
       id: 0,
-      shortURL: 'test',
-      sourceURL: 'google.com',
+      shortURL: 'tES3t',
+      sourceURL: 'https://bit.ly/narenmobilework',
       viewCount: 0,
     };
     jest
       .spyOn(resolver, 'createShrinkLink')
       .mockImplementation(async () => result);
-    expect(await resolver.createShrinkLink({ sourceURL: 'google.com' })).toBe(
-      result,
-    );
+    expect(
+      await resolver.createShrinkLink({
+        sourceURL: 'https://bit.ly/narenmobilework',
+      }),
+    ).toBe(result);
   });
 });

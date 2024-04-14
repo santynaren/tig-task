@@ -34,7 +34,7 @@ describe('ShrinklinkService', () => {
     }).compile();
     shrinkLink = {
       id: 1,
-      sourceURL: 'https://www.google.com',
+      sourceURL: 'https://www.https://bit.ly/naren-web',
       shortURL: 'http://localhost:3000/test189',
       viewCount: 0,
     };
