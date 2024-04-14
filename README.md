@@ -43,24 +43,23 @@ Complete Informaiton on the steps taken to aid the following implementation coul
 
 ## Features
 
-- Supports more than 255 chatacters URL
+- Supports more than 1000 chatacters URL
 - Shortend URL to 5 chatacter string, ease to use
 - Check views with viewcount params
-
-
 
 ### Prerequisites 
 
 * postgres.app (https://postgresapp.com/)
 * docker (not mandatory)
-* verify postgres or docker being running before testing the project
+* yarn or npm
+* verify postgres or docker is running or started before testing the project
 
 ### Installation
 
 * Initally clone the repository and run `yarn install`
 * Create a new `.env` file with the contents in `.env.example` and update the placeholders with your system
 
-#### Local
+#### Steps to run in Local
 * Migrate Prisma DB with following command
 
 ```bash
@@ -74,11 +73,11 @@ Complete Informaiton on the steps taken to aid the following implementation coul
 ```bash
    yarn start:dev 
 ```
-* You can find the service running on `http://localhost:3000/api/graphql`
+* You can find the service running on `http://localhost:3000/`
 * Creating Short URLs : `http://localhost:3000/api/graphql`
-* Testing Short URLs Redirection : `http://localhost:3000/:shortURL`
+* Testing Short URLs Redirection : `http://localhost:3000/{type-shorten-url}`
 
-#### Docker
+#### Steps to run in Docker
 * Verify `docker-compose.yml`
 * Start docker container
 ```bash
@@ -111,7 +110,7 @@ Complete Informaiton on the steps taken to aid the following implementation coul
 | :-------- | :------- | :------------------------- |
 | `/` | `:shortURL` | call the shortURL here, you will find the page redirected |
 
-### GET Graphql-Queries `/api/graphql`
+### Queries `/api/graphql`
 
 | Query | Args     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -120,7 +119,7 @@ Complete Informaiton on the steps taken to aid the following implementation coul
 
 
 
-### POST Graphql-Mutations `/api/graphql`
+### Mutations `/api/graphql`
 
 | Mutation | Args     | Description                       |
 | :-------- | :------- | :-------------------------------- |
