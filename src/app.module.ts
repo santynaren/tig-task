@@ -7,6 +7,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 
+// path is declared here to accomadate / root url shortening
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
