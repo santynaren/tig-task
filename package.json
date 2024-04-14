@@ -17,7 +17,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "dotenv -e .env.test -- npx prisma migrate reset --force --skip-seed  && dotenv -e .env.test -- jest --runInBand --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@apollo/server": "^4.10.2",
@@ -27,6 +27,7 @@
     "@nestjs/graphql": "^12.1.1",
     "@nestjs/platform-express": "^10.0.0",
     "@prisma/client": "5.12.1",
+    "dotenv-cli": "^7.4.1",
     "graphql": "^16.8.1",
     "prisma": "^5.12.1",
     "reflect-metadata": "^0.2.0",

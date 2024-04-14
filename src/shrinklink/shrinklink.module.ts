@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ShrinklinkService } from './shrinklink.service';
 import { ShrinklinkResolver } from './shrinklink.resolver';
-import { PrismaModule } from 'src/database/prisma.module';
+import { PrismaModule } from '../database/prisma.module';
 
 @Module({
   imports: [PrismaModule],
