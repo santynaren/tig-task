@@ -1,0 +1,31 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Shrinklink {
+  """unique Identification"""
+  id: Int!
+
+  """short url"""
+  shortURL: String!
+
+  """destination url"""
+  sourceURL: String!
+
+  """view count"""
+  viewCount: Int!
+}
+
+type Query {
+  getShrinklinks: [Shrinklink!]
+  getSourceLink(shortURL: String!): Shrinklink!
+}
+
+type Mutation {
+  createShrinkLink(createShrinklinkInput: CreateShrinklinkInput!): Shrinklink!
+}
+
+input CreateShrinklinkInput {
+  """destination URL"""
+  sourceURL: String!
+}
