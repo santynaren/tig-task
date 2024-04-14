@@ -37,12 +37,7 @@ export class ShrinklinkService {
     if (getSourceLink !== null) {
       return getSourceLink;
     } else {
-      return {
-        id: 0,
-        shortURL: null,
-        sourceURL: 'No Such URL Exists',
-        viewCount: 0,
-      };
+      throw 'Following URL Does not exist';
     }
   }
 }

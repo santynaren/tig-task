@@ -21,13 +21,13 @@ export class AppService {
       },
     });
     if (getSourceURL !== null) {
+      
       await this.prisma.urlTable.update({
         where: { shortURL: process.env.HOST_PATH + shortURL },
         data: { viewCount: { increment: 1 } },
       });
       return { url: getSourceURL.sourceURL };
-    } else {
-      return this.handleWrongLink();
     }
+    return this.handleWrongLink();
   }
 }

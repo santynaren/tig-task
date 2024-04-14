@@ -17,7 +17,7 @@ export class AppController {
   }
 
   @Get(':shortURL')
-  @Redirect('', 301)
+  @Redirect('/', 301)
   redirectToSourceLink(@Param('shortURL') shortURL: string) {
     if (validateShortUrl(shortURL)) {
       try {
@@ -25,8 +25,7 @@ export class AppController {
       } catch (e) {
         throw e;
       }
-    } else {
-      return this.appService.handleWrongLink();
     }
+    return this.appService.handleWrongLink();
   }
 }

@@ -42,7 +42,6 @@ export const validateShortUrl = (longURL: string) => {
   const partsOfURL = longURL.split('/');
   if (partsOfURL[partsOfURL.length - 1].length === 5) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 };
