@@ -12,14 +12,10 @@ export class ShrinklinkResolver {
   async createShrinkLink(
     @Args('createShrinklinkInput') createShrinklinkInput: CreateShrinklinkInput,
   ): Promise<Shrinklink> {
-    if (createShrinklinkInput.sourceURL.length > 7) {
-      try {
-        return this.shrinklinkService.createShrinkLink(createShrinklinkInput);
-      } catch (e) {
-        throw e;
-      }
-    } else {
-      throw 'URL Length Must be more than 7 Characters';
+    try {
+      return this.shrinklinkService.createShrinkLink(createShrinklinkInput);
+    } catch (e) {
+      throw e;
     }
   }
 

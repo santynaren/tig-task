@@ -21,7 +21,6 @@ import { ErrorMessage } from './utils/types.helper';
       context: ({ req }) => ({ request: req }),
       formatError: (error) => {
         const originalError = error.extensions?.originalError as ErrorMessage;
-
         if (!originalError) {
           return {
             message: error.message,
