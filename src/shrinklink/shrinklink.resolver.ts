@@ -11,7 +11,11 @@ export class ShrinklinkResolver {
   async createShrinkLink(
     @Args('createShrinklinkInput') createShrinklinkInput: CreateShrinklinkInput,
   ): Promise<Shrinklink> {
-    return this.shrinklinkService.createShrinkLink(createShrinklinkInput);
+    try {
+      return this.shrinklinkService.createShrinkLink(createShrinklinkInput);
+    } catch (e) {
+      throw e;
+    }
   }
 
   @Query(() => [Shrinklink], { name: 'getShrinklinks', nullable: true })
