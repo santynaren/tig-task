@@ -2,7 +2,7 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { ShrinklinkService } from './shrinklink.service';
 import { Shrinklink } from './entities/shrinklink.entity';
 import { CreateShrinklinkInput } from './dto/create-shrinklink.input';
-import { validateShortUrl } from 'src/utils/url.helper';
+import { validateShortUrl } from '../utils/url.helper';
 
 @Resolver(() => Shrinklink)
 export class ShrinklinkResolver {

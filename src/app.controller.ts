@@ -1,5 +1,6 @@
 import { Controller, Get, Param, Redirect } from '@nestjs/common';
 import { AppService } from './app.service';
+import { validateShortUrl } from './utils/url.helper';
 
 @Controller()
 export class AppController {
@@ -18,6 +19,14 @@ export class AppController {
   @Get(':shortURL')
   @Redirect('', 301)
   redirectToSourceLink(@Param('shortURL') shortURL: string) {
-    return this.appService.redirectToSourceLink(shortURL);
+    if (validateShortUrl(shortURL)) {
+      try {
+        return this.appService.redirectToSourceLink(shortURL);
+      } catch (e) {
+        throw e;
+      }
+    } else {
+      return this.appService.handleWrongLink();
+    }
   }
 }

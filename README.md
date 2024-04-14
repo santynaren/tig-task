@@ -1,22 +1,45 @@
+
 # ShrinkLink - URL Shortener Project
 
 The following task is being completed by Narendra as part of TIG Company Interview for the Role of Senior Software Engineer
 
+
+
+
+## Demo
+
+| Usage | Links | 
+| -------- | ------- | 
+| Live Web Service | https://tt-uviq.onrender.com/ |
+| GraphQL PlayGround | https://tt-uviq.onrender.com/api/graphql |
+| Test Link | https://tt-uviq.onrender.com/Kbwfb |
+
+#### Kindly Note:
+I have hosted on Render a free hosting service, servers are in Singapore Coast but there would be a downtime for 60 seconds for the server to start in the case of inactivity
+
+
 ## Tech Stack
 
-| Tech            | Tech Stack Used |
-| :-------------- | :-------------- |
-| Server          | NodeJs, NestJs  |
-| ORM             | Prisma          |
-| Database        | Postgres        |
-| API Layer       | GraphQL         |
-| Langugae        | TypeScript      |
-| Package Manager | yarn            |
-| Tests           | Jest            |
+| Tech | Tech Stack Used | 
+| :-------- | :------- | 
+| Server | NodeJs, NestJs|
+| ORM | Prisma |
+| Database | Postgres |
+| API Layer | GraphQL |
+| Langugae | TypeScript |
+| Package Manager | yarn |
+| Tests | Jest |
+
+
+
+
+
+
 
 ## Documentation
 
 Complete Informaiton on the steps taken to aid the following implementation could be found here : [System Design](https://docs.google.com/document/d/1eGzX1aHYAVP14ASylG08X1v-KlqbiqmQAKlVdzSabv0/edit?usp=sharing)
+
 
 ## Features
 
@@ -24,103 +47,89 @@ Complete Informaiton on the steps taken to aid the following implementation coul
 - Shortend URL to 5 chatacter string, ease to use
 - Check views with viewcount params
 
-### Prerequisites
 
-- postgres.app (https://postgresapp.com/)
-- docker (not mandatory)
-- verify postgres or docker being running before testing the project
+
+### Prerequisites 
+
+* postgres.app (https://postgresapp.com/)
+* docker (not mandatory)
+* verify postgres or docker being running before testing the project
 
 ### Installation
 
-- Initally clone the repository and run `yarn install`
-- Create a new `.env` file with the contents in `.env.example` and update the placeholders with your system
+* Initally clone the repository and run `yarn install`
+* Create a new `.env` file with the contents in `.env.example` and update the placeholders with your system
 
 #### Local
-
-- Migrate Prisma DB with following command
-
-```bash
-   yarn prisma migrate dev --name init
-```
-
-- Run Prisma Studio to check the connection is working and you are able to see the schema as mentioned in `prisma/schema.prisma`
+* Migrate Prisma DB with following command
 
 ```bash
-   yarn prisma studio
+   yarn prisma migrate dev --name init   
 ```
-
-- Run the server with the following command
-
+* Run Prisma Studio to check the connection is working and you are able to see the schema as mentioned in `prisma/schema.prisma`
 ```bash
-   yarn start:dev
+   yarn prisma studio  
 ```
-
-- You can find the service running on `http://localhost:3000/api/graphql`
-- Creating Short URLs : `http://localhost:3000/api/graphql`
-- Testing Short URLs Redirection : `http://localhost:3000/:shortURL`
+* Run the server with the following command
+```bash
+   yarn start:dev 
+```
+* You can find the service running on `http://localhost:3000/api/graphql`
+* Creating Short URLs : `http://localhost:3000/api/graphql`
+* Testing Short URLs Redirection : `http://localhost:3000/:shortURL`
 
 #### Docker
-
-- Verify `docker-compose.yml`
-- Start docker container
-
+* Verify `docker-compose.yml`
+* Start docker container
 ```bash
    docker compose up -d
 ```
-
-- Migrate Prisma DB with following command
-
+* Migrate Prisma DB with following command
 ```bash
-   yarn prisma migrate dev --name init
+   yarn prisma migrate dev --name init   
 ```
-
-- Validate the schema with the following commands
-
+* Validate the schema with the following commands
 ```bash
    docker exec -it [your-container-name] psql -U [your-user-name] [your-postgres-name]
 ```
-
-- then type the following to check the connection is working and you are able to see the schema as mentioned in `prisma/schema.prisma`
-
+* then type the following to check the connection is working and you are able to see the schema as mentioned in `prisma/schema.prisma`
 ```bash
-   \dt
+   \dt 
 ```
-
-- Run the server with the following command
-
+* Run the server with the following command
 ```bash
-   yarn start:dev
+   yarn start:dev 
 ```
-
-- You can find the service running on `http://localhost:3000/api/graphql`
-- Creating Short URLs : `http://localhost:3000/api/graphql`
-- Testing Short URLs Redirection : `http://localhost:3000/:shortURL`
-
+* You can find the service running on `http://localhost:3000/api/graphql`
+* Creating Short URLs : `http://localhost:3000/api/graphql`
+* Testing Short URLs Redirection : `http://localhost:3000/:shortURL`
 ## API Reference
 
 ### GET Http
 
-| Parameter | Query       | Description                                               |
-| :-------- | :---------- | :-------------------------------------------------------- |
-| `/`       | `:shortURL` | call the shortURL here, you will find the page redirected |
+| Parameter | Query     | Description                |
+| :-------- | :------- | :------------------------- |
+| `/` | `:shortURL` | call the shortURL here, you will find the page redirected |
 
 ### GET Graphql-Queries `/api/graphql`
 
-| Query            | Args       | Description                         |
-| :--------------- | :--------- | :---------------------------------- |
-| `getShrinklinks` |            | Returns all the shrinkLinks from DB |
-| `getSourceLink`  | `shortURL` | Returns the sourceURL               |
+| Query | Args     | Description                |
+| :-------- | :------- | :------------------------- |
+| `getShrinklinks` |  | Returns all the shrinkLinks from DB |
+| `getSourceLink` | `shortURL` | Returns the sourceURL |
+
+
 
 ### POST Graphql-Mutations `/api/graphql`
 
-| Mutation           | Args        | Description                        |
-| :----------------- | :---------- | :--------------------------------- |
-| `createShrinkLink` | `sourceURL` | Returns an object with Shrinklinks |
+| Mutation | Args     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `createShrinkLink`      | `sourceURL` | Returns an object with Shrinklinks |
+
 
 ## Running Tests
 
 ### Unit Test
-
 Run the following command
 
 ```bash
@@ -128,13 +137,16 @@ Run the following command
 ```
 
 ### End to End Test
-
 Make a copy envionrment of `.env` by name `.env.test` (for this you can use the `.env.example` as reference) also make sure you have the connection properly adhered to the stack
 
 ```bash
   yarn test:e2e
 ```
 
+
+
+
 ## Issues
 
 For Issues or queries, email santhoshnarendra@gmail.com
+

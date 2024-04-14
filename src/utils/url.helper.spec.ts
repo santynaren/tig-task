@@ -7,4 +7,12 @@ describe('urlHelper Core Tests', () => {
     expect(typeof executeFunction).toBe('string');
     expect(executeFunction).toHaveLength(5);
   });
+  it('returns string as return', () => {
+    const executeFunction = urlHelper.validateShortUrl('/test123');
+    expect(executeFunction).toBe(false);
+  });
+  it('returns string as return', () => {
+    const executeFunction = urlHelper.validateShortUrl('/test123/test4');
+    expect(executeFunction).toBe(true);
+  });
 });

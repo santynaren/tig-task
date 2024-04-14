@@ -22,7 +22,7 @@ describe('AppController (e2e)', () => {
       return request(app.getHttpServer())
         .post('/api/graphql')
         .send({
-          query: `{getSourceLink(shortURL: "http://localhost:3000/urm35s"){sourceURL id viewCount}}`,
+          query: `{getSourceLink(shortURL: "http://localhost:3000/urm35"){sourceURL id viewCount}}`,
         })
         .expect(200)
         .expect((res) => {
