@@ -5,7 +5,7 @@ import { PrismaService } from './database/prisma.service';
 export class AppService {
   constructor(private prisma: PrismaService) {}
   getHello(): string {
-    return 'Hello World!';
+    return '<h1>ShrinkLink - URL Shortener Project</h1><p>The following task is being completed by Narendra as part of TIG Company Interview for the Role of Senior Software Engineer</p><h2>';
   }
 
   public async handleWrongLink() {
